@@ -27,14 +27,17 @@ public class LoginServlet extends HttpServlet {
             // 登录失败
             // 存储错误信息到request
             request.setAttribute("login_msg", "用户名或密码错误");
+
             // 跳转到login.jsp
             request.getRequestDispatcher("login.jsp").forward(request, response);
 
         }else {
+            // 登录成功，
             // 将登陆成功后的用户对象，存储到session
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            // 登录成功，跳转到查询所有BrandServlet
+
+            // 跳转到查询所有BrandServlet
             String path = request.getContextPath();
             response.sendRedirect(path + "/selectAllServlet");
         }
