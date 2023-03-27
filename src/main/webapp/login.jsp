@@ -23,7 +23,7 @@
         <p>Username:<input id="username" name="username" type="text"></p>
 
         <p>Password:<input id="password" name="password" type="password"></p>
-        <p>Remember:<input id="remember" name="remember" type="checkbox"></p>
+        <p>Remember:<input id="remember" name="remember" value="1" type="checkbox"></p>
         <div id="subDiv">
             <input type="submit" class="button" value="login up">
             <input type="reset" class="button" value="reset">&nbsp;&nbsp;&nbsp;

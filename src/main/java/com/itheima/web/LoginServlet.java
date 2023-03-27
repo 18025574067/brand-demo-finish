@@ -19,6 +19,9 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
+        // 获取复选框数据
+        String remember = request.getParameter("remember");
+
         // 2. 调用service方法查询User
         User user = service.login(username, password);
 
@@ -33,6 +36,24 @@ public class LoginServlet extends HttpServlet {
 
         }else {
             // 登录成功，
+            // 判断用户是否勾选 记住我 (字符串写前面，防止出现空值异常)
+            if ("1".equals(remember)){
+                // 勾选了
+
+                // 创建cookie
+                Cookie c_username = new Cookie("username", username);
+                Cookie c_psssword = new Cookie("password", password);
+
+                // 设置cookie的存活时间
+                int time = 60*60*24*7;
+                c_username.setMaxAge(time);
+                c_psssword.setMaxAge(time);
+
+                // 发送cookie
+                response.addCookie(c_username);
+                response.addCookie(c_psssword);
+
+            }
             // 将登陆成功后的用户对象，存储到session
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
