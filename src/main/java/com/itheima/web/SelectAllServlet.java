@@ -16,7 +16,6 @@ public class SelectAllServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // 1. 调用BrandService完成查询
-
         List<Brand> brands = service.selectAll();
 
         // 2. 存入request域中
