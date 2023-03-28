@@ -48,7 +48,7 @@
                 <td>验证码</td>
                 <td class="inputs">
                     <input name="checkCode" type="text" id="checkCode">
-                    <img src="imgs/a.jpg">
+                    <img id="checkCodeImg" src="/brand-demo-finish/checkCodeServlet">
                     <a href="#" id="changeImg">看不清？</a>
                 </td>
             </tr>
@@ -62,5 +62,11 @@
     </form>
 
 </div>
+
+<script>
+    document.getElementById("changeImg").onclick = function (){
+        document.getElementById("checkCodeImg").src="/brand-demo-finish/checkCodeServlet?" + new Date().getMilliseconds();
+    }
+</script>
 </body>
 </html>
