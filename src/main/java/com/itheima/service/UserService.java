@@ -31,4 +31,28 @@ public class UserService {
 
         return user;
     }
+
+
+    /**
+     * 注册方法
+     * @return
+     */
+    public boolean register(User user){
+
+        // 2. 获取sqlSession
+        SqlSession sqlSession = factory.openSession();
+
+        // 3. 获取BrandMapper
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        // 4. 判断用户是否存在
+        User u = mapper.selectByUsername(user.getUsername());
+        if (u == null){
+            // 用户名未被注册
+            mapper.add(user);
+            sqlSession.commit();
+        }
+        sqlSession.close();
+        return u == null;
+    }
 }
