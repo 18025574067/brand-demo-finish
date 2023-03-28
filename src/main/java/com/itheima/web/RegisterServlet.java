@@ -3,7 +3,6 @@ package com.itheima.web;
 import com.itheima.pojo.User;
 import com.itheima.service.UserService;
 
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
