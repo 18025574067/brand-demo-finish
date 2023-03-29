@@ -31,7 +31,7 @@ public class CheckCodeUtil {
      * @param height 图片高度
      * @param os  输出流
      * @param verifySize 数据长度
-     * @return
+     * @return 验证码数据
      * @throws IOException
      */
     public static String outputVerifyImage(int width, int height, OutputStream os, int verifySize) throws IOException {

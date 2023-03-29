@@ -4466,7 +4466,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>brand_name</UnderlyingIndexName>
     </key>
     <column id="600" parent="238" name="id">
-      <AutoIncrement>8</AutoIncrement>
+      <AutoIncrement>13</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>

@@ -22,6 +22,21 @@ public class RegisterServlet extends HttpServlet {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+        // 接收用户输入的验证码
+        String checkCode = request.getParameter("checkCode");
+
+        // 程序生成的验证码
+        HttpSession session = request.getSession();
+        String checkCodeGen = (String)session.getAttribute("checkCodeGen");
+
+        // 比对
+        if (!checkCodeGen.equalsIgnoreCase(checkCode)){
+            // 不允许注册
+            // 注册失败，跳转到注册页面
+            request.setAttribute("register_msg", "验证码错误。。。");
+            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            return;
+        }
 
         // 2. 调用service注册
         boolean flag = service.register(user);

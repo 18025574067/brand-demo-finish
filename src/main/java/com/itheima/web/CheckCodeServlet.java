@@ -13,9 +13,14 @@ import java.io.OutputStream;
 public class CheckCodeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // 生成验证码
         ServletOutputStream os = response.getOutputStream();
         String checkCode = CheckCodeUtil.outputVerifyImage(100, 50, os, 4);
 
+        // 存入session
+        HttpSession session = request.getSession();
+        session.setAttribute("checkCodeGen", checkCode);
     }
 
     @Override
