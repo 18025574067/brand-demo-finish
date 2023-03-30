@@ -11,6 +11,9 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
 
+        // 判断资源是否与登录注册有关
+        String[] urls = {"/loginServlet", "/registerServlet", "/checkCodeServlet", "/css/", "/imgs/", "register.jsp", "login.jsp"};
+
         HttpServletRequest req = (HttpServletRequest) request;
 
         // 1. 判断session中是否有user
