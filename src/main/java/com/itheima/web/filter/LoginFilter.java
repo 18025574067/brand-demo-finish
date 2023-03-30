@@ -15,6 +15,16 @@ public class LoginFilter implements Filter {
         String[] urls = {"/loginServlet", "/registerServlet", "/checkCodeServlet", "/css/", "/imgs/", "register.jsp", "login.jsp"};
 
         HttpServletRequest req = (HttpServletRequest) request;
+        String url = req.getRequestURL().toString();
+        for (String u : urls) {
+            if (url.contains(u)){
+                // 找到了
+                // 放行
+                chain.doFilter(request, response);
+//                break;
+                return;
+            }
+        }
 
         // 1. 判断session中是否有user
         HttpSession session = req.getSession();
