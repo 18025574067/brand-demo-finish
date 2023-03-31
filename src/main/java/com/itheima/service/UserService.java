@@ -61,7 +61,7 @@ public class UserService {
      * @param user
      * @return
      */
-    public boolean selectUser(String username){
+    public boolean selectUser(User user){
 
         // 2. 获取sqlSession
         SqlSession sqlSession = factory.openSession();
@@ -73,9 +73,10 @@ public class UserService {
         User u = mapper.selectByUsername(user.getUsername());
         if (u == null){
             // 用户名未被注册
-            return true;
+            return false;
         }
+        // 用户名未注册
         sqlSession.close();
-        return false;
+        return true;
     }
 }

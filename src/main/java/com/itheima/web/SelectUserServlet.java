@@ -1,5 +1,6 @@
 package com.itheima.web;
 
+import com.itheima.pojo.User;
 import com.itheima.service.UserService;
 
 import javax.servlet.*;
@@ -16,10 +17,10 @@ public class SelectUserServlet extends HttpServlet {
 
         // 1. 接收用户名
         String username = request.getParameter("username");
-
-        // 2. 调用service 查询用户名
-        service.selectUser()
-        boolean flag = true;
+        User user = new User();
+        user.setUsername(username);
+        // 2. 调用service 查询用户名是否存在
+        boolean flag = service.selectUser(user);
 
         // 3. 响应标志
         response.getWriter().write("" + flag);
