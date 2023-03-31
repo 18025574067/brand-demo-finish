@@ -30,6 +30,7 @@
                     <input name="username" type="text" id="username">
                     <br>
                     <span id="username_err" class="err_msg">${register_msg}</span>
+<%--                    <span id="username_err" class="err_msg">该用户名己被注册</span>--%>
                 </td>
 
             </tr>
