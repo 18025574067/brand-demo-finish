@@ -55,4 +55,27 @@ public class UserService {
         sqlSession.close();
         return u == null;
     }
+
+    /**
+     * 查询用户名是否存在
+     * @param user
+     * @return
+     */
+    public boolean selectUser(String username){
+
+        // 2. 获取sqlSession
+        SqlSession sqlSession = factory.openSession();
+
+        // 3. 获取BrandMapper
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        // 4. 判断用户是否存在
+        User u = mapper.selectByUsername(user.getUsername());
+        if (u == null){
+            // 用户名未被注册
+            return true;
+        }
+        sqlSession.close();
+        return false;
+    }
 }
